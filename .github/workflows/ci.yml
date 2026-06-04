@@ -14,18 +14,18 @@ jobs:
  
     steps:
       - name: Checkout do repositório
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
  
       - name: Instalar Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          node-version: 20
  
       - name: Instalar dependências
         run: npm install
  
       - name: Rodar testes Cypress
-        run: npm test
+        run: npx cypress run --env allure=true
  
       - name: Gerar relatório Allure
         if: always()
@@ -37,3 +37,4 @@ jobs:
         with:
           name: allure-report
           path: allure-report
+ 
